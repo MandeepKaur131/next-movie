@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Silver Screen</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Montserrat:wght@300;400&display=swap" rel="stylesheet">
+</head>
+<body class="dark-theme">
+    <div class="starry-bg"></div>
+    
+    <header class="glass-header">
+        <h1>🎬 Silver Screen</h1>
+        <p>Curated movie magic just for you</p>
+    </header>
+
+    <main class="container">
+        <!-- Search Section -->
+        <section class="search-box glass-card">
+            <input type="text" placeholder="Search for movies..." class="search-input">
+            <button class="search-btn">Find Movies</button>
+        </section>
+
+        <!-- Results Grid -->
+        <section id="movie-grid" class="movie-grid">
+            <!-- Dynamically populated -->
+        </section>
+
+        <!-- Movie Details Modal (Hidden by default) -->
+        <div id="movie-modal" class="modal">
+            <!-- Content loaded via JS -->
+        </div>
+    </main>
+
+    <script src="js/script.js"></script>
+</body>
+</html>
