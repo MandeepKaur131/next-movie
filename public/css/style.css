@@ -140,3 +140,47 @@ h1 {
         width: 100%;
     }
 }
+
+/* ====================== */
+/* Loading/Error States */
+/* ====================== */
+.loading, .error, .no-results {
+    grid-column: 1 / -1;
+    text-align: center;
+    padding: 2rem;
+    font-size: 1.2rem;
+}
+
+.error {
+    color: #ff6b6b;
+}
+
+/* ====================== */
+/* Movie Cards */
+/* ====================== */
+.movie-card {
+    transition: transform 0.3s ease;
+    cursor: pointer;
+    overflow: hidden;
+}
+
+.movie-card:hover {
+    transform: translateY(-10px);
+}
+
+.movie-card img {
+    width: 100%;
+    border-radius: 10px 10px 0 0;
+    aspect-ratio: 2/3;
+    object-fit: cover;
+}
+
+.movie-card h3 {
+    margin: 0.5rem 0;
+    font-size: 1.1rem;
+}
+
+.movie-card p {
+    margin: 0;
+    opacity: 0.8;
+}
