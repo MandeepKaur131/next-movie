@@ -25,18 +25,40 @@ document.addEventListener('DOMContentLoaded', () => {
                 : `${baseURL}/api/movies`;
             
             const response = await fetch(url);
-            const movies = await response.json();
             
-            displayMovies(movies);
+            // Check for HTTP errors first
+            if (!response.ok) {
+                const errorData = await response.json();
+                throw new Error(errorData.error || 'Failed to fetch movies');
+            }
+            
+            const data = await response.json();
+            console.log("API Response:", data);
+            
+            displayMovies(data);
         } catch (error) {
-            movieGrid.innerHTML = `<div class="error">Failed to load movies: ${error.message}</div>`;
-            console.error('Error:', error);
+            movieGrid.innerHTML = `
+                <div class="error">
+                    Search failed: ${error.message}<br>
+                    <small>Try a different search term</small>
+                </div>`;
+            console.error('Fetch error:', error);
         }
     }
 
-    // Display movies in grid
-    function displayMovies(movies) {
-        if (!movies || movies.length === 0) {
+    function displayMovies(data) {
+         if (data?.error) {
+            movieGrid.innerHTML = `
+                <div class="error">
+                    ${data.error}<br>
+                    <small>Try a different search term</small>
+                </div>`;
+            return;
+        }
+        // Extract movies array from response (handles both formats)
+        const movies = Array.isArray(data) ? data : data?.results || [];
+        
+        if (!movies.length) {
             movieGrid.innerHTML = '<div class="no-results">No movies found. Try another search!</div>';
             return;
         }
@@ -52,7 +74,7 @@ document.addEventListener('DOMContentLoaded', () => {
             </div>
         `).join('');
 
-        //Click handlers AFTER creating the cards
+        // Click handlers
         document.querySelectorAll('.movie-card').forEach(card => {
             card.addEventListener('click', () => {
                 showMovieDetails(card.dataset.id);
@@ -65,8 +87,16 @@ document.addEventListener('DOMContentLoaded', () => {
         try {
             const response = await fetch(`${baseURL}/api/movies/${movieId}`);
             if (!response.ok) throw new Error("Failed to fetch movie details");
-            
             const movie = await response.json();
+
+            let trailerKey = null;
+            try {
+                const trailerResponse = await fetch(`${baseURL}/api/movies/${movieId}/videos`);
+                const data = await trailerResponse.json();
+                trailerKey = data?.key || null;
+            } catch (e) {
+                console.error('Trailer fetch error:', e);
+            }
             
             // Populate modal
             document.getElementById('modal-title').textContent = movie.title;
@@ -85,6 +115,17 @@ document.addEventListener('DOMContentLoaded', () => {
             genresContainer.innerHTML = movie.genres?.map(genre => 
                 `<span class="genre-tag">${genre.name}</span>`
             ).join('') || 'No genres listed';
+
+            // Trailer
+            const trailerBtn = document.querySelector('.trailer-btn');
+            if (trailerKey) {
+                trailerBtn.style.display = 'block';
+                trailerBtn.onclick = () => {
+                    window.open(`https://youtube.com/watch?v=${trailerKey}`);
+                };
+            } else {
+                trailerBtn.style.display = 'none';
+            }
             
             // Display modal
             document.getElementById('movie-modal').style.display = 'block';
