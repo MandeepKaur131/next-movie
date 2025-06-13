@@ -1,186 +1,267 @@
+/* ====================== */
+/* CSS Variables (Root) */
+/* ====================== */
 :root {
-    --primary: #6a11cb;
-    --secondary: #2575fc;
-    --text-light: #f8f9fa;
-    --glass: rgba(255, 255, 255, 0.1);
+  --primary: #6a11cb;
+  --secondary: #2575fc;
+  --text-light: #f8f9fa;
+  --glass: rgba(255, 255, 255, 0.1);
 }
 
+/* ====================== */
+/* Base Styles */
+/* ====================== */
 body {
-    font-family: 'Montserrat', sans-serif;
-    color: var(--text-light);
-    min-height: 100vh;
-    background: linear-gradient(135deg, #0f0c29, #302b63);
-    position: relative;
-    overflow-x: hidden;
-}
-
-.starry-bg {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><circle cx="20" cy="20" r="0.5" fill="white" opacity="0.8"/><circle cx="50" cy="30" r="0.7" fill="white" opacity="0.6"/></svg>') repeat;
-    z-index: -1;
-    opacity: 0.3;
-}
-
-.glass-header {
-    text-align: center;
-    padding: 2rem;
-    margin-bottom: 2rem;
-    background: var(--glass);
-    backdrop-filter: blur(10px);
-    border-bottom: 1px solid rgba(255,255,255,0.1);
+  font-family: 'Montserrat', sans-serif;
+  color: var(--text-light);
+  min-height: 100vh;
+  background: linear-gradient(135deg, #0f0c29, #302b63);
+  position: relative;
+  overflow-x: hidden;
 }
 
 h1 {
-    font-family: 'Playfair Display', serif;
-    font-size: 3rem;
-    background: linear-gradient(to right, #ff8a00, #da1b60);
-    -webkit-background-clip: text;
-    background-clip: text;
-    color: transparent;
-    margin-bottom: 0.5rem;
+  font-family: 'Playfair Display', serif;
+  font-size: 3rem;
+  background: linear-gradient(to right, #ff8a00, #da1b60);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  margin-bottom: 0.5rem;
 }
 
 /* ====================== */
-/* Glass card effect */
+/* Background Elements */
+/* ====================== */
+.starry-bg {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><circle cx="20" cy="20" r="0.5" fill="white" opacity="0.8"/><circle cx="50" cy="30" r="0.7" fill="white" opacity="0.6"/></svg>') repeat;
+  z-index: -1;
+  opacity: 0.3;
+}
+
+/* ====================== */
+/* Header Styles */
+/* ====================== */
+.glass-header {
+  text-align: center;
+  padding: 2rem;
+  margin-bottom: 2rem;
+  background: var(--glass);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* ====================== */
+/* Glass Card Component */
 /* ====================== */
 .glass-card {
-    background: var(--glass);
-    backdrop-filter: blur(10px);
-    border-radius: 15px;
-    padding: 2rem;
-    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
-    border: 1px solid rgba(255, 255, 255, 0.18);
+  background: var(--glass);
+  backdrop-filter: blur(10px);
+  border-radius: 15px;
+  padding: 2rem;
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+  border: 1px solid rgba(255, 255, 255, 0.18);
 }
 
 /* ====================== */
-/* Movie grid styling */
+/* Search Component */
 /* ====================== */
-.movie-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-    gap: 2rem;
-    margin-top: 2rem;
-}
-
-/* ====================== */
-/* Search Box Enhancements */
-/* ====================== */
-
 .search-box {
-    display: flex;
-    max-width: 800px;
-    margin: 0 auto;
-    gap: 1rem;
+  display: flex;
+  max-width: 800px;
+  margin: 0 auto;
+  gap: 1rem;
 }
 
 .search-input {
-    flex: 1;
-    padding: 1rem 1.5rem;
-    border: none;
-    border-radius: 50px;
-    background: rgba(255, 255, 255, 0.1);
-    backdrop-filter: blur(5px);
-    color: var(--text-light);
-    font-size: 1.1rem;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
-    transition: all 0.3s ease;
-    border: 1px solid rgba(255, 255, 255, 0.1);
+  flex: 1;
+  padding: 1rem 1.5rem;
+  border: none;
+  border-radius: 50px;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(5px);
+  color: var(--text-light);
+  font-size: 1.1rem;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+  border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .search-input::placeholder {
-    color: rgba(255, 255, 255, 0.6);
+  color: rgba(255, 255, 255, 0.6);
 }
 
 .search-input:focus {
-    outline: none;
-    background: rgba(255, 255, 255, 0.15);
-    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.2);
-    border-color: rgba(255, 255, 255, 0.3);
+  outline: none;
+  background: rgba(255, 255, 255, 0.15);
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.2);
+  border-color: rgba(255, 255, 255, 0.3);
 }
 
 .search-btn {
-    padding: 1rem 2rem;
-    background: linear-gradient(45deg, var(--primary), var(--secondary));
-    color: white;
-    border: none;
-    border-radius: 50px;
-    font-weight: 600;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    box-shadow: 0 4px 15px rgba(106, 17, 203, 0.3);
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    backdrop-filter: blur(5px);
-    border: 1px solid rgba(255, 255, 255, 0.2);
+  padding: 1rem 2rem;
+  background: linear-gradient(45deg, var(--primary), var(--secondary));
+  color: white;
+  border: none;
+  border-radius: 50px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(106, 17, 203, 0.3);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  backdrop-filter: blur(5px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
 }
 
 .search-btn:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 6px 20px rgba(106, 17, 203, 0.4);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(106, 17, 203, 0.4);
 }
 
 .search-btn:active {
-    transform: translateY(0);
+  transform: translateY(0);
 }
 
 /* ====================== */
-/* Responsive Adjustments */
+/* Movie Grid System */
 /* ====================== */
-@media (max-width: 768px) {
-    .search-box {
-        flex-direction: column;
-    }
-    
-    .search-input, 
-    .search-btn {
-        width: 100%;
-    }
+.movie-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 2rem;
+  margin-top: 2rem;
 }
 
-/* ====================== */
-/* Loading/Error States */
-/* ====================== */
-.loading, .error, .no-results {
-    grid-column: 1 / -1;
-    text-align: center;
-    padding: 2rem;
-    font-size: 1.2rem;
-}
-
-.error {
-    color: #ff6b6b;
-}
-
-/* ====================== */
-/* Movie Cards */
-/* ====================== */
 .movie-card {
-    transition: transform 0.3s ease;
-    cursor: pointer;
-    overflow: hidden;
+  transition: transform 0.3s ease;
+  cursor: pointer;
+  overflow: hidden;
 }
 
 .movie-card:hover {
-    transform: translateY(-10px);
+  transform: translateY(-10px);
 }
 
 .movie-card img {
-    width: 100%;
-    border-radius: 10px 10px 0 0;
-    aspect-ratio: 2/3;
-    object-fit: cover;
+  width: 100%;
+  border-radius: 10px 10px 0 0;
+  aspect-ratio: 2/3;
+  object-fit: cover;
 }
 
 .movie-card h3 {
-    margin: 0.5rem 0;
-    font-size: 1.1rem;
+  margin: 0.5rem 0;
+  font-size: 1.1rem;
 }
 
 .movie-card p {
-    margin: 0;
-    opacity: 0.8;
+  margin: 0;
+  opacity: 0.8;
+}
+
+/* ====================== */
+/* Modal Dialog */
+/* ====================== */
+.modal {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.8);
+  backdrop-filter: blur(5px);
+  z-index: 1000;
+  overflow-y: auto;
+}
+
+.modal-content {
+  max-width: 800px;
+  margin: 5% auto;
+  padding: 2rem;
+  animation: fadeIn 0.3s ease;
+}
+
+.modal-body {
+  display: flex;
+  gap: 2rem;
+}
+
+.modal-poster img {
+  width: 300px;
+  border-radius: 10px;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+}
+
+.close-btn {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  font-size: 2rem;
+  cursor: pointer;
+  transition: transform 0.2s;
+}
+
+.close-btn:hover {
+  transform: scale(1.2);
+}
+
+/* ====================== */
+/* State Classes */
+/* ====================== */
+.loading, 
+.error, 
+.no-results {
+  grid-column: 1 / -1;
+  text-align: center;
+  padding: 2rem;
+  font-size: 1.2rem;
+}
+
+.error {
+  color: #ff6b6b;
+}
+
+/* ====================== */
+/* Animations */
+/* ====================== */
+@keyframes fadeIn {
+  from { 
+    opacity: 0; 
+    transform: translateY(20px); 
+  }
+  to { 
+    opacity: 1; 
+    transform: translateY(0); 
+  }
+}
+
+/* ====================== */
+/* Responsive Breakpoints */
+/* ====================== */
+@media (max-width: 768px) {
+  /* Search adjustments */
+  .search-box {
+    flex-direction: column;
+  }
+  
+  .search-input, 
+  .search-btn {
+    width: 100%;
+  }
+
+  /* Modal adjustments */
+  .modal-body {
+    flex-direction: column;
+  }
+  
+  .modal-poster img {
+    width: 100%;
+  }
 }
